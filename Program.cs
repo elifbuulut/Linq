@@ -14,15 +14,7 @@ namespace Linq
             { new Category {CategoryID=1, CategoryName="Bilgisayar"},
               new Category {CategoryID=2, CategoryName="Telefon"}
             };
-            //------------------------------------------------------------------
-            //Product product = new Product();    
-            //product.CategoryID = 1;
-            //product.ProductName = "dsfsdsd0";
-            //Product product2 = new Product();   
-            //product2.CategoryID = 2;
-            //product2.ProductName = "vdfvfv";
-            //BU ŞEKİLDE YAPMAK YERİNE LİST'TEN YARARLANIYORUM!
-            //------------------------------------------------------------------ 
+
 
             List<Product> products = new List<Product>()
             {
@@ -34,12 +26,12 @@ namespace Linq
                 //Bu veri kaynakları veri tabanından gelecek !Şimdilik boyle oldugunu varsayıyoruz 
             };
 
-            //---------------ÜRÜNLERİ EKRANA YAZDIRMAK İSTEDİĞİMDE LINQ KULLANMADAN VS--- LINQ KULLANARAK                                     
+            //---------------ÜRÜNLERİ EKRANA YAZDIRMAK  LINQ KULLANMADAN VS--- LINQ KULLANARAK                                     
             Console.WriteLine("Lınq Olmadan Algoritmik Yapı Ile Ekrana Yazdırma ");
             // product=> döngü gezerken alias(takma isim)
             foreach (var product in products)
             {
-                // FİLTRELEME ŞARTIM; BİRİM FİYATI 5000 DEN  FAZLA STOK ADEDİ 3 DEN BÜYÜK OLAN ÜRÜNLERİ LİSTELE 
+                // FİLTRELEME ŞARTI; BİRİM FİYATI 5000 DEN  FAZLA STOK ADEDİ 3 DEN BÜYÜK OLAN ÜRÜNLERİ LİSTELE 
                 if (product.UnitPrice > 5000 && product.UnitsInStok > 3)
                 {
                     Console.WriteLine($"{product.ProductName}\n");
@@ -56,9 +48,8 @@ namespace Linq
          static void GetProducts(List<Product> products)
         {
             // var result ==>>>List<Product> result   ;        tip=> var yerine List<Product> 
-            //arka tarafta bir iterasyonm yani dongü çalışıyor. Burada ki p tıpkı foreachde ki gibi  product mantığında 
-            //yani var product in products dediğimizde burda ki product döngü gezerken kullanması için alias tı. yani burda ki (p=>) p takma isim 
-            // p => (lambda işareti) p için   ,   //KOŞULUM() => WHERE  , Enumerable oldugu için ToList(); convertini unutma!
+            //arka tarafta bir iterasyon yani dongü çalışıyor. foreachde ki gibi  
+            // p => (lambda işareti) p için   ,   //KOŞUL() => WHERE  , Enumerable oldugu için ToList(); 
             List<Product> result = products.Where(p => p.UnitPrice > 5000 && p.UnitsInStok > 3).ToList();
             //bu şartlara bir e ticaret uygulamasında onlarca şart getirilebilir örn kategori ismine de şart koy
             //işte bu yüzden bu yapıyı korumak adına linq kurtarıcı 
